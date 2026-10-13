@@ -12,12 +12,14 @@
   --color-muted: #7b6a60;
   --color-line: #e8dccb;
   --color-whatsapp: #1fa855;
-  --font-display: var(--font-fraunces), "Rozha One", Georgia, serif;
-  --font-sans: var(--font-dm), "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-fraunces), var(--font-poppins), Georgia, serif;
+  --font-sans: var(--font-dm), var(--font-poppins), var(--font-mukta), "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+  --font-hindi: var(--font-poppins), var(--font-mukta), "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size-adjust: from-font;
 }
 
 body {
@@ -26,6 +28,41 @@ body {
   font-family: var(--font-sans);
   -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
+}
+
+/* Dedicated Clear & Beautiful Hindi Typography */
+html[lang="hi"],
+html[data-lang="hi"] {
+  font-family: var(--font-hindi);
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+html[lang="hi"] h1,
+html[lang="hi"] h2,
+html[lang="hi"] h3,
+html[lang="hi"] h4,
+html[lang="hi"] .font-display,
+html[data-lang="hi"] h1,
+html[data-lang="hi"] h2,
+html[data-lang="hi"] h3,
+html[data-lang="hi"] h4,
+html[data-lang="hi"] .font-display {
+  font-family: var(--font-poppins), var(--font-mukta), system-ui, sans-serif;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+html[lang="hi"] p,
+html[lang="hi"] span,
+html[lang="hi"] a,
+html[lang="hi"] button,
+html[data-lang="hi"] p,
+html[data-lang="hi"] span,
+html[data-lang="hi"] a,
+html[data-lang="hi"] button {
+  font-family: var(--font-poppins), var(--font-mukta), "Noto Sans Devanagari", system-ui, sans-serif;
 }
 
 /* Woven-textile pattern used as photo fallback / section texture */

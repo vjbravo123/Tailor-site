@@ -1,13 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, DM_Sans } from "next/font/google";
+import { Fraunces, DM_Sans, Poppins, Mukta } from "next/font/google";
 import { site } from "@/lib/data";
 import { LanguageProvider } from "@/lib/language-context";
 import { LanguageModal } from "@/components/language-switcher";
 import "./globals.css";
 
-
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" });
 const dm = DM_Sans({ subsets: ["latin"], variable: "--font-dm" });
+const poppins = Poppins({
+  subsets: ["devanagari", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+const mukta = Mukta({
+  subsets: ["devanagari", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mukta",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://umajoshi-tailors.com"),
@@ -91,12 +102,15 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${dm.variable}`}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${dm.variable} ${poppins.variable} ${mukta.variable}`}
+    >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Rozha+One&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
         <script

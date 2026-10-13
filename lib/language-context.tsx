@@ -29,6 +29,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       if (saved === "en" || saved === "hi") {
         setLangState(saved);
         document.documentElement.lang = saved;
+        document.documentElement.setAttribute("data-lang", saved);
+      } else {
+        document.documentElement.setAttribute("data-lang", "en");
       }
     } catch {
       // localStorage may be unavailable in private browsing
@@ -40,6 +43,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     try {
       localStorage.setItem(STORAGE_KEY, next);
       document.documentElement.lang = next;
+      document.documentElement.setAttribute("data-lang", next);
     } catch {
       // ignore
     }

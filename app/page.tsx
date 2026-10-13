@@ -69,9 +69,9 @@ export default function Home() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/icon.png"
-              alt="Logo"
-              className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-full object-cover ring-2 ring-primary/20 transition group-hover:ring-primary/50 shadow-xs"
+              src="/images/uma-portrait.jpg"
+              alt={t.site.owner}
+              className="h-10 w-10 sm:h-11 sm:w-11 shrink-0 rounded-full object-cover ring-2 ring-saffron/70 transition group-hover:ring-primary shadow-xs"
             />
             <div className="min-w-0">
               <span className="block truncate font-display text-base sm:text-lg font-bold leading-tight text-primary">
@@ -138,34 +138,34 @@ export default function Home() {
         <div className="border-motif" />
 
         {/* Mobile Horizontal Section Navigation Pills */}
-        <div className="flex md:hidden items-center gap-1.5 overflow-x-auto no-scrollbar border-b border-line/60 bg-background/95 px-3 py-2 text-xs">
+        <div className="flex md:hidden items-center gap-1.5 overflow-x-auto no-scrollbar border-b border-line/60 bg-background/95 px-3 py-1.5 text-xs">
           <a
             href="#services"
-            className="shrink-0 rounded-full bg-card border border-line px-3 py-1 font-medium text-foreground/85 active:bg-primary active:text-white"
+            className="shrink-0 rounded-full bg-card border border-line px-2.5 py-1 text-[11px] font-medium text-foreground/85 active:bg-primary active:text-white"
           >
             🧵 {t.nav.services}
           </a>
           <a
             href="#shop"
-            className="shrink-0 rounded-full bg-card border border-line px-3 py-1 font-medium text-foreground/85 active:bg-primary active:text-white"
+            className="shrink-0 rounded-full bg-card border border-line px-2.5 py-1 text-[11px] font-medium text-foreground/85 active:bg-primary active:text-white"
           >
             👗 {t.nav.shop}
           </a>
           <a
             href="#process"
-            className="shrink-0 rounded-full bg-card border border-line px-3 py-1 font-medium text-foreground/85 active:bg-primary active:text-white"
+            className="shrink-0 rounded-full bg-card border border-line px-2.5 py-1 text-[11px] font-medium text-foreground/85 active:bg-primary active:text-white"
           >
             ✂️ {t.nav.process}
           </a>
           <a
             href="#reviews"
-            className="shrink-0 rounded-full bg-card border border-line px-3 py-1 font-medium text-foreground/85 active:bg-primary active:text-white"
+            className="shrink-0 rounded-full bg-card border border-line px-2.5 py-1 text-[11px] font-medium text-foreground/85 active:bg-primary active:text-white"
           >
             ⭐ {t.nav.reviews}
           </a>
           <a
             href="#contact"
-            className="shrink-0 rounded-full bg-card border border-line px-3 py-1 font-medium text-foreground/85 active:bg-primary active:text-white"
+            className="shrink-0 rounded-full bg-card border border-line px-2.5 py-1 text-[11px] font-medium text-foreground/85 active:bg-primary active:text-white"
           >
             📞 {t.nav.contact}
           </a>
@@ -173,139 +173,177 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-4 pb-12 sm:pt-8 sm:pb-16 md:py-20">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 sm:px-6 md:grid-cols-12 md:gap-10">
-          {/* Left Text Column */}
-          <div className="md:col-span-7">
-            {/* Status / Location Badge */}
-            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 rounded-full border border-primary/20 bg-card px-3 py-1 text-xs font-medium text-foreground shadow-2xs">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <MapPin size={13} className="text-primary shrink-0" />
-              <span>{t.hero.badge}</span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="mt-4 font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-foreground">
-              {t.hero.titlePart1}
-              <em className="font-normal italic text-primary">{t.hero.titleHighlight}</em>
-              {t.hero.titlePart2}
-            </h1>
-
-            {/* Description */}
-            <p className="mt-4 max-w-xl text-base sm:text-lg leading-relaxed text-muted">
-              {t.hero.desc}
-            </p>
-
-            {/* Trust highlights (Mobile-First 3 Chips) */}
-            <div className="mt-5 grid grid-cols-3 gap-2 sm:gap-3 max-w-lg">
-              <div className="rounded-2xl border border-line bg-card/80 p-2.5 text-center shadow-2xs">
-                <span className="block text-xs sm:text-sm font-bold text-primary">
-                  {t.hero.trustPickup}
-                </span>
-                <span className="block text-[10px] sm:text-xs text-muted truncate">
-                  {t.hero.trustPickupSub}
-                </span>
+      <section className="relative overflow-hidden pt-4 pb-10 sm:pt-8 sm:pb-14 md:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid items-center gap-6 sm:gap-8 md:grid-cols-12 md:gap-10">
+            {/* Left Column: Headline, Bio & CTAs */}
+            <div className="md:col-span-7 flex flex-col justify-center">
+              {/* Status / Location Badge */}
+              <div className="inline-flex self-start items-center gap-1.5 rounded-full border border-primary/20 bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-2xs">
+                <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <MapPin size={13} className="text-primary shrink-0" />
+                <span>{t.hero.badge}</span>
               </div>
-              <div className="rounded-2xl border border-line bg-card/80 p-2.5 text-center shadow-2xs">
-                <span className="block text-xs sm:text-sm font-bold text-saffron">
-                  {t.hero.trustRating}
-                </span>
-                <span className="block text-[10px] sm:text-xs text-muted truncate">
-                  {t.hero.trustRatingSub}
-                </span>
-              </div>
-              <div className="rounded-2xl border border-line bg-card/80 p-2.5 text-center shadow-2xs">
-                <span className="block text-xs sm:text-sm font-bold text-indigo">
-                  {t.hero.trustFit}
-                </span>
-                <span className="block text-[10px] sm:text-xs text-muted truncate">
-                  {t.hero.trustFitSub}
-                </span>
-              </div>
-            </div>
 
-            {/* CTA Buttons */}
-            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center">
-              <ButtonLink
-                size="lg"
-                variant="whatsapp"
-                target="_blank"
-                rel="noopener"
-                href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
-                className="w-full sm:w-auto text-sm sm:text-base shadow-lg shadow-whatsapp/25"
-              >
-                <MessageCircle size={20} />
-                <span>{t.hero.bookWa}</span>
-              </ButtonLink>
+              {/* Main Headline with clear contrast */}
+              <h1 className="mt-3 sm:mt-4 font-display text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.2] tracking-tight text-foreground">
+                {t.hero.titlePart1}
+                <span className="text-primary font-bold">{t.hero.titleHighlight}</span>
+                {t.hero.titlePart2}
+              </h1>
 
-              <ButtonLink
-                size="lg"
-                variant="outline"
-                href="#services"
-                className="w-full sm:w-auto text-sm sm:text-base border-primary/30"
-              >
-                <span>{t.hero.seeServices}</span>
-                <ArrowRight size={17} />
-              </ButtonLink>
-            </div>
+              {/* Mobile Portrait Card (Visible on Phone between Title and Action to create instant human connection) */}
+              <div className="mt-4 block md:hidden">
+                <div className="relative overflow-hidden rounded-2xl border-2 border-primary/15 shadow-xl bg-card">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/hero-1.jpg"
+                    alt={`${t.site.owner} — Ladies Tailor`}
+                    className="aspect-[4/3] w-full object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
 
-            {/* Timings */}
-            <p className="mt-4 flex items-center gap-2 text-xs sm:text-sm text-muted">
-              <Clock size={15} className="text-saffron shrink-0" />
-              <span>{t.hero.hours}</span>
-            </p>
-          </div>
+                  {/* Corner Experience Tag */}
+                  <div className="absolute top-2.5 right-2.5 rounded-full bg-card/95 px-2.5 py-0.5 text-[10px] font-bold text-primary shadow-xs backdrop-blur-xs">
+                    ✨ {t.hero.umaExp}
+                  </div>
 
-          {/* Right Visual Collage Column */}
-          <div className="md:col-span-5">
-            <div className="relative mx-auto w-full max-w-sm sm:max-w-md">
-              {/* Main Master Photo */}
-              <div className="relative overflow-hidden rounded-3xl sm:rounded-[2.5rem] border-2 border-primary/10 shadow-2xl">
-                <Photo
-                  src="hero-1.jpg"
-                  alt="Uma Joshi tailoring at sewing machine"
-                  tone="from-primary to-[#3d0f20]"
-                  className="aspect-[4/4.5] w-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-
-                {/* Floating Bottom Card */}
-                <div className="absolute bottom-3 inset-x-3 rounded-2xl bg-card/95 p-3 backdrop-blur-md border border-line shadow-lg">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary/10 text-primary">
-                        <HeartHandshake size={18} />
-                      </span>
-                      <div>
-                        <p className="text-xs font-bold text-foreground">{t.site.owner}</p>
-                        <p className="text-[10px] text-muted">{t.site.society}</p>
+                  {/* Bottom Tailor Identity Bar */}
+                  <div className="absolute bottom-2.5 inset-x-2.5 rounded-xl bg-card/95 p-2.5 backdrop-blur-md border border-line shadow-md">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 min-w-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="/images/uma-portrait.jpg"
+                          alt={t.hero.umaTitle}
+                          className="h-9 w-9 shrink-0 rounded-full object-cover ring-2 ring-saffron"
+                        />
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-foreground truncate">{t.hero.umaTitle}</p>
+                          <p className="text-[10px] text-muted truncate">{t.hero.umaRole} · {t.hero.societyTag}</p>
+                        </div>
                       </div>
+                      <span className="shrink-0 rounded-full bg-saffron/20 px-2 py-0.5 text-[10px] font-bold text-primary">
+                        5.0 ★
+                      </span>
                     </div>
-                    <span className="rounded-full bg-saffron/20 px-2 py-0.5 text-[10px] font-bold text-primary">
-                      {isHindi ? "सारे होम्स" : "Tower 8 Studio"}
-                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* Secondary Floating Thumbnail 1 (Fabric) */}
-              <div className="absolute -top-3 -right-3 sm:-top-5 sm:-right-5 h-20 w-20 sm:h-28 sm:w-28 overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-card shadow-xl">
-                <Photo
-                  src="hero-2.jpg"
-                  alt="Silk fabric rolls"
-                  tone="from-saffron to-[#b9650f]"
-                  className="h-full w-full"
-                />
+              {/* Description */}
+              <p className="mt-3 sm:mt-4 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-muted">
+                {t.hero.desc}
+              </p>
+
+              {/* Clean, Non-Cramped Trust Highlights */}
+              <div className="mt-4 sm:mt-5 grid grid-cols-3 gap-2 sm:gap-3 max-w-lg">
+                <div className="rounded-xl sm:rounded-2xl border border-line bg-card/90 p-2 sm:p-2.5 text-center shadow-2xs">
+                  <span className="block text-xs sm:text-sm font-bold text-primary truncate">
+                    🛵 {t.hero.trustPickup}
+                  </span>
+                  <span className="block text-[10px] sm:text-xs text-muted truncate">
+                    {t.hero.trustPickupSub}
+                  </span>
+                </div>
+                <div className="rounded-xl sm:rounded-2xl border border-line bg-card/90 p-2 sm:p-2.5 text-center shadow-2xs">
+                  <span className="block text-xs sm:text-sm font-bold text-saffron truncate">
+                    {t.hero.trustRating}
+                  </span>
+                  <span className="block text-[10px] sm:text-xs text-muted truncate">
+                    {t.hero.trustRatingSub}
+                  </span>
+                </div>
+                <div className="rounded-xl sm:rounded-2xl border border-line bg-card/90 p-2 sm:p-2.5 text-center shadow-2xs">
+                  <span className="block text-xs sm:text-sm font-bold text-indigo truncate">
+                    ✂️ {t.hero.trustFit}
+                  </span>
+                  <span className="block text-[10px] sm:text-xs text-muted truncate">
+                    {t.hero.trustFitSub}
+                  </span>
+                </div>
               </div>
 
-              {/* Secondary Floating Thumbnail 2 (Scissors/Thread) */}
-              <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 h-16 w-16 sm:h-20 sm:w-20 overflow-hidden rounded-full border-2 border-card shadow-xl">
-                <Photo
-                  src="hero-3.jpg"
-                  alt="Tailor scissors and measuring tape"
-                  tone="from-indigo to-[#111a3a]"
-                  className="h-full w-full"
-                />
+              {/* CTA Action Buttons */}
+              <div className="mt-5 sm:mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center">
+                <ButtonLink
+                  size="lg"
+                  variant="whatsapp"
+                  target="_blank"
+                  rel="noopener"
+                  href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
+                  className="w-full sm:w-auto text-sm sm:text-base font-semibold shadow-lg shadow-whatsapp/25 justify-center"
+                >
+                  <MessageCircle size={19} />
+                  <span>{t.hero.bookWa}</span>
+                </ButtonLink>
+
+                <ButtonLink
+                  size="lg"
+                  variant="outline"
+                  href={`tel:+${t.site.whatsapp}`}
+                  className="w-full sm:w-auto text-sm sm:text-base border-primary/30 justify-center hover:bg-card"
+                >
+                  <Phone size={17} className="text-primary" />
+                  <span>{t.hero.callDirect}</span>
+                </ButtonLink>
+              </div>
+
+              {/* Timings & Direct Services Link */}
+              <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock size={14} className="text-saffron shrink-0" />
+                  <span>{t.hero.hours}</span>
+                </span>
+                <a href="#services" className="inline-flex items-center gap-1 text-primary hover:underline font-medium">
+                  <span>{t.hero.seeServices}</span>
+                  <ArrowRight size={13} />
+                </a>
+              </div>
+            </div>
+
+            {/* Desktop Visual Showcase Column (md:block) */}
+            <div className="hidden md:block md:col-span-5">
+              <div className="relative mx-auto w-full max-w-md">
+                {/* Master Studio Frame */}
+                <div className="relative overflow-hidden rounded-3xl sm:rounded-[2.5rem] border-2 border-primary/15 shadow-2xl bg-card">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/hero-1.jpg"
+                    alt={`${t.site.owner} — Master Ladies Tailor at Sewing Machine`}
+                    className="aspect-[4/4.5] w-full object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
+
+                  {/* Top Badge: Experience & Boutique Quality */}
+                  <div className="absolute top-4 right-4 rounded-full bg-card/95 px-3 py-1 text-xs font-bold text-primary shadow-sm backdrop-blur-xs border border-line">
+                    ✨ {t.hero.umaExp}
+                  </div>
+
+                  {/* Floating Identity & Society Card */}
+                  <div className="absolute bottom-4 inset-x-4 rounded-2xl bg-card/95 p-3.5 backdrop-blur-md border border-line shadow-xl">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="/images/uma-portrait.jpg"
+                          alt={t.hero.umaTitle}
+                          className="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-saffron"
+                        />
+                        <div className="min-w-0">
+                          <p className="text-sm font-bold text-foreground leading-tight">{t.hero.umaTitle}</p>
+                          <p className="text-xs text-muted truncate">{t.hero.umaRole} · {t.hero.societyTag}</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <span className="inline-block rounded-full bg-saffron/20 px-2.5 py-0.5 text-xs font-bold text-primary">
+                          5.0 ★
+                        </span>
+                        <p className="text-[10px] text-muted mt-0.5">100+ Homes</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -613,11 +651,26 @@ export default function Home() {
           <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
             {t.contact.title}
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-primary-foreground/80 max-w-xl">
-            {t.contact.desc}
-          </p>
+          {/* Tailor Contact Profile Card */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-6 p-3.5 rounded-2xl bg-white/10 backdrop-blur-xs border border-white/10">
+            <div className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/uma-portrait.jpg"
+                alt={t.site.owner}
+                className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-saffron"
+              />
+              <div>
+                <p className="font-bold text-sm text-white">{t.site.owner}</p>
+                <p className="text-xs text-white/80">{t.hero.umaRole} · {t.site.society}</p>
+              </div>
+            </div>
+            <span className="self-start sm:self-auto rounded-full bg-saffron/20 border border-saffron/30 px-3 py-1 text-xs font-semibold text-saffron">
+              ✨ {t.hero.trustPickup}
+            </span>
+          </div>
 
-          <div className="mt-6 space-y-2.5 text-xs sm:text-sm text-primary-foreground/90">
+          <div className="mt-5 space-y-2.5 text-xs sm:text-sm text-primary-foreground/90">
             <p className="flex items-center gap-2">
               <Phone size={16} className="text-saffron shrink-0" />
               <span>
