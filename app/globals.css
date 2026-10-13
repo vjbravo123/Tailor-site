@@ -12,20 +12,39 @@
   --color-muted: #7b6a60;
   --color-line: #e8dccb;
   --color-whatsapp: #1fa855;
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-sans: var(--font-dm), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), "Rozha One", Georgia, serif;
+  --font-sans: var(--font-dm), "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
-body { background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); -webkit-tap-highlight-color: transparent; }
+html {
+  scroll-behavior: smooth;
+}
 
-/* woven-textile pattern used as photo fallback / section texture */
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* Woven-textile pattern used as photo fallback / section texture */
 .weave {
   background-image:
     repeating-linear-gradient(45deg, rgb(255 255 255 / .09) 0 2px, transparent 2px 10px),
     repeating-linear-gradient(-45deg, rgb(0 0 0 / .07) 0 2px, transparent 2px 10px);
 }
+
 .border-motif {
-  height: 10px;
-  background: repeating-linear-gradient(90deg, var(--color-saffron) 0 10px, var(--color-primary) 10px 20px, var(--color-indigo) 20px 30px);
+  height: 6px;
+  background: repeating-linear-gradient(90deg, var(--color-saffron) 0 12px, var(--color-primary) 12px 24px, var(--color-indigo) 24px 36px);
+}
+
+/* Hide scrollbars for clean mobile touch carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

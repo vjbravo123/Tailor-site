@@ -1,18 +1,62 @@
-import { MessageCircle, Phone } from "lucide-react";
-import { ButtonLink } from "@/components/ui/button";
-import { site, wa } from "@/lib/data";
+"use client";
 
-/** Sticky bottom bar on mobile — WhatsApp + call everywhere. */
+import { MessageCircle, Phone, Globe } from "lucide-react";
+import { ButtonLink } from "@/components/ui/button";
+import { useLanguage } from "@/lib/language-context";
+import { waLink } from "@/lib/translations";
+
+/** Sticky bottom bar on mobile — WhatsApp + call + instant language toggle everywhere. */
 export function WhatsAppBar() {
+  const { t, isHindi, toggleLang, setShowLangModal } = useLanguage();
+
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-background/90 p-3 pb-[max(.75rem,env(safe-area-inset-bottom))] backdrop-blur-md">
-      <div className="mx-auto flex max-w-xl gap-2">
-        <ButtonLink href={`tel:+${site.whatsapp}`} variant="outline" className="flex-1"><Phone size={18} />Call</ButtonLink>
-        <ButtonLink href={wa("Namaste! I found you via the society group. I'd like to know more.")}
-          target="_blank" rel="noopener" variant="whatsapp" className="flex-[2]">
-          <MessageCircle size={20} />Chat on WhatsApp
+    <aside
+      aria-label="Quick contact"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-line/80 bg-background/95 p-2.5 pb-[max(.75rem,env(safe-area-inset-bottom))] backdrop-blur-lg shadow-lg md:hidden"
+    >
+      <div className="mx-auto flex max-w-lg items-center gap-2">
+        {/* Quick Language Switch Button */}
+        <button
+          type="button"
+          onClick={toggleLang}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            setShowLangModal(true);
+          }}
+          className="flex h-11 shrink-0 items-center justify-center gap-1 rounded-2xl border border-primary/25 bg-card px-2.5 text-xs font-semibold text-primary transition active:scale-95 shadow-2xs"
+          title={isHindi ? "Switch to English" : "हिन्दी में देखें"}
+          aria-label="Language switch"
+        >
+          <Globe size={15} />
+          <span className="text-[11px] font-bold tracking-tight">
+            {isHindi ? "EN" : "हिन्दी"}
+          </span>
+        </button>
+
+        {/* Direct Call Button */}
+        <ButtonLink
+          href={`tel:+${t.site.whatsapp}`}
+          variant="outline"
+          size="sm"
+          className="h-11 flex-1 rounded-2xl border-primary/30 text-xs font-semibold px-2"
+        >
+          <Phone size={16} />
+          <span>{t.bottomBar.call}</span>
+        </ButtonLink>
+
+        {/* WhatsApp Chat Button */}
+        <ButtonLink
+          href={waLink(t.site.whatsapp, t.bottomBar.waBottomMsg)}
+          target="_blank"
+          rel="noopener"
+          variant="whatsapp"
+          size="sm"
+          className="h-11 flex-[2] rounded-2xl text-xs font-semibold px-3 shadow-md"
+        >
+          <MessageCircle size={18} />
+          <span>{t.bottomBar.whatsapp}</span>
         </ButtonLink>
       </div>
-    </div>
+    </aside>
   );
 }
