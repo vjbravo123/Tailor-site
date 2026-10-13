@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #fbf5ea;
+  --color-foreground: #2a1a14;
+  --color-primary: #7a1f3d;
+  --color-primary-foreground: #fff7ee;
+  --color-saffron: #e8a317;
+  --color-indigo: #24305e;
+  --color-sage: #6f8a6a;
+  --color-card: #fffaf2;
+  --color-muted: #7b6a60;
+  --color-line: #e8dccb;
+  --color-whatsapp: #1fa855;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-dm), system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); -webkit-tap-highlight-color: transparent; }
+
+/* woven-textile pattern used as photo fallback / section texture */
+.weave {
+  background-image:
+    repeating-linear-gradient(45deg, rgb(255 255 255 / .09) 0 2px, transparent 2px 10px),
+    repeating-linear-gradient(-45deg, rgb(0 0 0 / .07) 0 2px, transparent 2px 10px);
+}
+.border-motif {
+  height: 10px;
+  background: repeating-linear-gradient(90deg, var(--color-saffron) 0 10px, var(--color-primary) 10px 20px, var(--color-indigo) 20px 30px);
+}
