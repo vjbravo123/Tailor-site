@@ -26,6 +26,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { useLanguage } from "@/lib/language-context";
 import { waLink } from "@/lib/translations";
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/lib/use-scroll-reveal";
 
 const iconMap = {
   sparkles: Sparkles,
@@ -86,19 +87,19 @@ export default function Home() {
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-            <a href="#services" className="text-foreground/80 hover:text-primary transition">
+            <a href="#services" className="nav-link-animated py-1 text-foreground/80 hover:text-primary transition">
               {t.nav.services}
             </a>
-            <a href="#shop" className="text-foreground/80 hover:text-primary transition">
+            <a href="#shop" className="nav-link-animated py-1 text-foreground/80 hover:text-primary transition">
               {t.nav.shop}
             </a>
-            <a href="#process" className="text-foreground/80 hover:text-primary transition">
+            <a href="#process" className="nav-link-animated py-1 text-foreground/80 hover:text-primary transition">
               {t.nav.process}
             </a>
-            <a href="#reviews" className="text-foreground/80 hover:text-primary transition">
+            <a href="#reviews" className="nav-link-animated py-1 text-foreground/80 hover:text-primary transition">
               {t.nav.reviews}
             </a>
-            <a href="#contact" className="text-foreground/80 hover:text-primary transition">
+            <a href="#contact" className="nav-link-animated py-1 text-foreground/80 hover:text-primary transition">
               {t.nav.contact}
             </a>
           </nav>
@@ -247,7 +248,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener"
                   href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
-                  className="w-full text-sm font-semibold shadow-lg shadow-whatsapp/25 justify-center h-12"
+                  className="w-full text-sm font-semibold shadow-lg shadow-whatsapp/25 justify-center h-12 btn-glow"
                 >
                   <MessageCircle size={18} />
                   <span>{t.hero.bookWa}</span>
@@ -287,7 +288,7 @@ export default function Home() {
               {/* Headline */}
               <h1 className="mt-4 font-display text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.2] tracking-tight text-foreground">
                 {t.hero.titlePart1}
-                <span className="text-primary font-bold">{t.hero.titleHighlight}</span>
+                <span className="gradient-text font-extrabold">{t.hero.titleHighlight}</span>
                 {t.hero.titlePart2}
               </h1>
 
@@ -298,7 +299,7 @@ export default function Home() {
 
               {/* Trust highlights */}
               <div className="mt-5 grid grid-cols-3 gap-3 max-w-lg">
-                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-200 hover:-translate-y-0.5 hover:shadow-xs">
                   <span className="block text-sm font-bold text-primary truncate">
                     🛵 {t.hero.trustPickup}
                   </span>
@@ -306,7 +307,7 @@ export default function Home() {
                     {t.hero.trustPickupSub}
                   </span>
                 </div>
-                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-200 hover:-translate-y-0.5 hover:shadow-xs">
                   <span className="block text-sm font-bold text-saffron truncate">
                     {t.hero.trustRating}
                   </span>
@@ -314,7 +315,7 @@ export default function Home() {
                     {t.hero.trustRatingSub}
                   </span>
                 </div>
-                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-200 hover:-translate-y-0.5 hover:shadow-xs">
                   <span className="block text-sm font-bold text-indigo truncate">
                     ✂️ {t.hero.trustFit}
                   </span>
@@ -332,7 +333,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener"
                   href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
-                  className="text-base font-semibold shadow-lg shadow-whatsapp/25 justify-center"
+                  className="text-base font-semibold shadow-lg shadow-whatsapp/25 justify-center btn-glow"
                 >
                   <MessageCircle size={19} />
                   <span>{t.hero.bookWa}</span>
@@ -365,7 +366,7 @@ export default function Home() {
             {/* Right Column: Desktop Photo */}
             <div className="hidden md:block md:col-span-5">
               <div className="relative mx-auto w-full max-w-md">
-                <div className="relative overflow-hidden rounded-[2.5rem] border-2 border-primary/15 shadow-2xl bg-card">
+                <div className="hero-photo-wrapper relative overflow-hidden rounded-[2.5rem] border-2 border-primary/15 shadow-2xl bg-card">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/hero-1.jpg"
@@ -412,32 +413,34 @@ export default function Home() {
 
       {/* Services Section */}
       <section id="services" className="mx-auto max-w-6xl scroll-mt-24 px-4 sm:px-6 py-10 sm:py-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
-              {t.services.eyebrow}
-            </p>
-            <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-primary">
-              {t.services.title}
-            </h2>
-            <p className="mt-2 text-sm sm:text-base text-muted max-w-xl">
-              {t.services.subtitle}
-            </p>
-          </div>
+        <ScrollReveal animation="fade-up">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
+                {t.services.eyebrow}
+              </p>
+              <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-primary">
+                {t.services.title}
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-muted max-w-xl">
+                {t.services.subtitle}
+              </p>
+            </div>
 
-          {/* Direct WhatsApp Consultation Button */}
-          <ButtonLink
-            variant="outline"
-            size="sm"
-            target="_blank"
-            rel="noopener"
-            href={waLink(t.site.whatsapp, isHindi ? "नमस्ते उमा जी! मुझे सिलाई के रेट और समय के बारे में जानकारी चाहिए।" : "Hi Uma ji! I want to check rates and timelines.")}
-            className="self-start md:self-end text-xs"
-          >
-            <MessageCircle size={15} />
-            <span>{isHindi ? "रेट लिस्ट पूछें" : "Ask Rate List"}</span>
-          </ButtonLink>
-        </div>
+            {/* Direct WhatsApp Consultation Button */}
+            <ButtonLink
+              variant="outline"
+              size="sm"
+              target="_blank"
+              rel="noopener"
+              href={waLink(t.site.whatsapp, isHindi ? "नमस्ते उमा जी! मुझे सिलाई के रेट और समय के बारे में जानकारी चाहिए।" : "Hi Uma ji! I want to check rates and timelines.")}
+              className="self-start md:self-end text-xs hover:border-primary/50 transition"
+            >
+              <MessageCircle size={15} />
+              <span>{isHindi ? "रेट लिस्ट पूछें" : "Ask Rate List"}</span>
+            </ButtonLink>
+          </div>
+        </ScrollReveal>
 
         {/* Category Filter Chips for Mobile and Desktop */}
         <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-6">
@@ -492,303 +495,319 @@ export default function Home() {
         </div>
 
         {/* Services Grid (Responsive: 1 col on mobile, 2 col on tablet, 3 on desktop) */}
-        <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredServices.map((s) => {
-            const Icon = iconMap[s.icon];
-            const enquiryMsg = `${t.services.waPrefix} ${s.title} (${s.from})`;
+        <ScrollReveal animation="fade-up" delay={80}>
+          <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredServices.map((s) => {
+              const Icon = iconMap[s.icon];
+              const enquiryMsg = `${t.services.waPrefix} ${s.title} (${s.from})`;
 
-            return (
-              <a
-                key={s.id}
-                target="_blank"
-                rel="noopener"
-                href={waLink(t.site.whatsapp, enquiryMsg)}
-                className="group relative flex flex-col justify-between rounded-3xl border border-line bg-card p-4 sm:p-5 transition duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg active:scale-[.99]"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
-                      <Icon size={20} />
-                    </span>
-                    <span className="rounded-full bg-saffron/15 px-3 py-1 text-xs font-bold text-primary">
-                      {t.services.fromLabel} <b className="text-sm font-extrabold">{s.from}</b>
-                    </span>
+              return (
+                <a
+                  key={s.id}
+                  target="_blank"
+                  rel="noopener"
+                  href={waLink(t.site.whatsapp, enquiryMsg)}
+                  className="group relative flex flex-col justify-between rounded-3xl border border-line bg-card p-4 sm:p-5 transition duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl active:scale-[.99] card-shine"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground icon-bounce shadow-2xs">
+                        <Icon size={20} />
+                      </span>
+                      <span className="rounded-full bg-saffron/15 px-3 py-1 text-xs font-bold text-primary">
+                        {t.services.fromLabel} <b className="text-sm font-extrabold">{s.from}</b>
+                      </span>
+                    </div>
+
+                    <h3 className="mt-3.5 font-display text-lg font-bold text-foreground group-hover:text-primary transition">
+                      {s.title}
+                    </h3>
+                    <p className="mt-1 text-xs sm:text-sm leading-relaxed text-muted">
+                      {s.desc}
+                    </p>
                   </div>
 
-                  <h3 className="mt-3.5 font-display text-lg font-bold text-foreground group-hover:text-primary transition">
-                    {s.title}
-                  </h3>
-                  <p className="mt-1 text-xs sm:text-sm leading-relaxed text-muted">
-                    {s.desc}
-                  </p>
-                </div>
-
-                {/* Bottom Card Action */}
-                <div className="mt-4 flex items-center justify-between border-t border-line/60 pt-3 text-xs">
-                  <span className="flex items-center gap-1 font-semibold text-whatsapp">
-                    <MessageCircle size={14} />
-                    <span>{t.services.enquire}</span>
-                  </span>
-                  <span className="flex items-center text-muted group-hover:text-primary transition">
-                    <ChevronRight size={16} />
-                  </span>
-                </div>
-              </a>
-            );
-          })}
-        </div>
+                  {/* Bottom Card Action */}
+                  <div className="mt-4 flex items-center justify-between border-t border-line/60 pt-3 text-xs">
+                    <span className="flex items-center gap-1 font-semibold text-whatsapp">
+                      <MessageCircle size={14} />
+                      <span>{t.services.enquire}</span>
+                    </span>
+                    <span className="flex items-center text-muted group-hover:text-primary transition">
+                      <ChevronRight size={16} />
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* Ready to Wear (Shop) Section — Coming Soon */}
       <section id="shop" className="bg-primary py-12 sm:py-16 text-primary-foreground overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
-              {t.shop.eyebrow}
-            </p>
-            <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
-              {t.shop.title}
-            </h2>
-            <p className="mt-2 text-sm sm:text-base text-primary-foreground/80 max-w-xl mx-auto">
-              {t.shop.subtitle}
-            </p>
-          </div>
+          <ScrollReveal animation="fade-up">
+            <div className="text-center max-w-2xl mx-auto">
+              <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
+                {t.shop.eyebrow}
+              </p>
+              <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
+                {t.shop.title}
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-primary-foreground/80 max-w-xl mx-auto">
+                {t.shop.subtitle}
+              </p>
+            </div>
+          </ScrollReveal>
 
           {/* Coming Soon showcase area */}
-          <div className="relative mt-8 sm:mt-10">
-            {/* Blurred placeholder product cards behind */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 select-none" aria-hidden="true">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    "rounded-3xl bg-white/[0.07] backdrop-blur-[1px] overflow-hidden transition",
-                    i > 4 ? "hidden sm:block" : "",
-                    i > 3 ? "hidden sm:block" : ""
-                  )}
-                >
-                  {/* Placeholder image area */}
-                  <div className="aspect-[4/5] w-full bg-gradient-to-br from-white/10 to-white/[0.03]" />
-                  {/* Placeholder text area */}
-                  <div className="p-3 sm:p-4 space-y-2">
-                    <div className="h-3 w-3/4 rounded-full bg-white/10" />
-                    <div className="h-3 w-1/2 rounded-full bg-white/[0.07]" />
+          <ScrollReveal animation="scale-up" delay={120}>
+            <div className="relative mt-8 sm:mt-10">
+              {/* Blurred placeholder product cards behind */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 select-none" aria-hidden="true">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <div
+                    key={i}
+                    className={cn(
+                      "rounded-3xl bg-white/[0.07] backdrop-blur-[1px] overflow-hidden transition",
+                      i > 4 ? "hidden sm:block" : "",
+                      i > 3 ? "hidden sm:block" : ""
+                    )}
+                  >
+                    {/* Placeholder image area */}
+                    <div className="aspect-[4/5] w-full bg-gradient-to-br from-white/10 to-white/[0.03]" />
+                    {/* Placeholder text area */}
+                    <div className="p-3 sm:p-4 space-y-2">
+                      <div className="h-3 w-3/4 rounded-full bg-white/10" />
+                      <div className="h-3 w-1/2 rounded-full bg-white/[0.07]" />
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            {/* Frosted glass Coming Soon overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-primary/60 backdrop-blur-md rounded-3xl">
-              {/* Floating decorative emojis */}
-              <span className="absolute top-6 left-6 sm:top-8 sm:left-10 text-3xl sm:text-4xl opacity-30 float-slow" aria-hidden="true">👗</span>
-              <span className="absolute bottom-8 right-6 sm:bottom-10 sm:right-10 text-3xl sm:text-4xl opacity-25 float-slower" aria-hidden="true">🧵</span>
-              <span className="absolute top-10 right-8 sm:top-12 sm:right-16 text-2xl opacity-20 float-slower" aria-hidden="true">✨</span>
-              <span className="absolute bottom-12 left-10 sm:bottom-14 sm:left-16 text-2xl opacity-20 float-slow" aria-hidden="true">🪡</span>
+              {/* Frosted glass Coming Soon overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-primary/60 backdrop-blur-md rounded-3xl">
+                {/* Floating decorative emojis */}
+                <span className="absolute top-6 left-6 sm:top-8 sm:left-10 text-3xl sm:text-4xl opacity-30 float-slow" aria-hidden="true">👗</span>
+                <span className="absolute bottom-8 right-6 sm:bottom-10 sm:right-10 text-3xl sm:text-4xl opacity-25 float-slower" aria-hidden="true">🧵</span>
+                <span className="absolute top-10 right-8 sm:top-12 sm:right-16 text-2xl opacity-20 float-slower" aria-hidden="true">✨</span>
+                <span className="absolute bottom-12 left-10 sm:bottom-14 sm:left-16 text-2xl opacity-20 float-slow" aria-hidden="true">🪡</span>
 
-              {/* Central content card */}
-              <div className="relative z-10 text-center px-6 py-8 sm:px-10 sm:py-10 max-w-md mx-auto">
-                {/* Shimmer animated badge */}
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron/30 bg-saffron/15 px-4 py-1.5 text-sm font-bold backdrop-blur-sm">
-                  <span className="flex h-2 w-2 rounded-full bg-saffron animate-pulse" />
-                  <span className="shimmer-badge text-base font-extrabold">{t.shop.comingSoonBadge}</span>
-                </span>
+                {/* Central content card */}
+                <div className="relative z-10 text-center px-6 py-8 sm:px-10 sm:py-10 max-w-md mx-auto">
+                  {/* Shimmer animated badge */}
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron/30 bg-saffron/15 px-4 py-1.5 text-sm font-bold backdrop-blur-sm">
+                    <span className="flex h-2 w-2 rounded-full bg-saffron animate-pulse" />
+                    <span className="shimmer-badge text-base font-extrabold">{t.shop.comingSoonBadge}</span>
+                  </span>
 
-                <h3 className="mt-4 font-display text-xl sm:text-2xl font-bold leading-snug text-primary-foreground">
-                  {t.shop.comingSoonTitle}
-                </h3>
-                <p className="mt-2.5 text-sm sm:text-base text-primary-foreground/80 leading-relaxed">
-                  {t.shop.comingSoonDesc}
-                </p>
+                  <h3 className="mt-4 font-display text-xl sm:text-2xl font-bold leading-snug text-primary-foreground">
+                    {t.shop.comingSoonTitle}
+                  </h3>
+                  <p className="mt-2.5 text-sm sm:text-base text-primary-foreground/80 leading-relaxed">
+                    {t.shop.comingSoonDesc}
+                  </p>
 
-                {/* Notify CTA */}
-                <ButtonLink
-                  size="lg"
-                  variant="whatsapp"
-                  target="_blank"
-                  rel="noopener"
-                  href={waLink(t.site.whatsapp, t.shop.comingSoonWaMsg)}
-                  className="mt-5 mx-auto text-sm font-semibold shadow-lg shadow-whatsapp/30 justify-center"
-                >
-                  <Bell size={16} />
-                  <span>{t.shop.comingSoonCta}</span>
-                </ButtonLink>
+                  {/* Notify CTA */}
+                  <ButtonLink
+                    size="lg"
+                    variant="whatsapp"
+                    target="_blank"
+                    rel="noopener"
+                    href={waLink(t.site.whatsapp, t.shop.comingSoonWaMsg)}
+                    className="mt-5 mx-auto text-sm font-semibold shadow-lg shadow-whatsapp/30 justify-center btn-glow"
+                  >
+                    <Bell size={16} />
+                    <span>{t.shop.comingSoonCta}</span>
+                  </ButtonLink>
 
-                {/* Subtle decorative divider */}
-                <div className="mt-6 flex items-center justify-center gap-2 text-primary-foreground/40">
-                  <span className="h-px w-8 bg-current" />
-                  <Scissors size={14} />
-                  <span className="h-px w-8 bg-current" />
+                  {/* Subtle decorative divider */}
+                  <div className="mt-6 flex items-center justify-center gap-2 text-primary-foreground/40">
+                    <span className="h-px w-8 bg-current" />
+                    <Scissors size={14} />
+                    <span className="h-px w-8 bg-current" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Process / How it works */}
       <section id="process" className="mx-auto max-w-6xl scroll-mt-24 px-4 sm:px-6 py-12 sm:py-16">
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
-            {t.process.eyebrow}
-          </p>
-          <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-primary">
-            {t.process.title}
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-muted">
-            {t.process.subtitle}
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
+              {t.process.eyebrow}
+            </p>
+            <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-primary">
+              {t.process.title}
+            </h2>
+            <p className="mt-2 text-sm sm:text-base text-muted">
+              {t.process.subtitle}
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Steps Cards */}
-        <div className="grid gap-4 md:grid-cols-3">
-          {t.process.steps.map((s, index) => (
-            <div
-              key={s.n}
-              className="relative rounded-3xl border border-line bg-card p-5 sm:p-6 shadow-2xs transition hover:shadow-md"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-display text-4xl sm:text-5xl font-extrabold text-saffron">
-                  {s.n}
-                </span>
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-primary font-bold text-xs">
-                  {index + 1}
-                </span>
+        <ScrollReveal animation="fade-up" delay={100}>
+          <div className="grid gap-4 md:grid-cols-3">
+            {t.process.steps.map((s, index) => (
+              <div
+                key={s.n}
+                className="relative rounded-3xl border border-line bg-card p-5 sm:p-6 shadow-2xs transition duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/30 card-shine"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-display text-4xl sm:text-5xl font-extrabold text-saffron">
+                    {s.n}
+                  </span>
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-primary font-bold text-xs">
+                    {index + 1}
+                  </span>
+                </div>
+                <h3 className="mt-3 font-display text-lg sm:text-xl font-bold text-foreground">
+                  {s.t}
+                </h3>
+                <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted">
+                  {s.d}
+                </p>
               </div>
-              <h3 className="mt-3 font-display text-lg sm:text-xl font-bold text-foreground">
-                {s.t}
-              </h3>
-              <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted">
-                {s.d}
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* Reviews / Testimonials */}
       <section id="reviews" className="bg-card/70 border-y border-line py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
-              {t.reviews.eyebrow}
-            </p>
-            <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-primary">
-              {t.reviews.title}
-            </h2>
-            <p className="mt-2 text-sm sm:text-base text-muted">
-              {t.reviews.subtitle}
-            </p>
-          </div>
+          <ScrollReveal animation="fade-up">
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+              <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
+                {t.reviews.eyebrow}
+              </p>
+              <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-primary">
+                {t.reviews.title}
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-muted">
+                {t.reviews.subtitle}
+              </p>
+            </div>
+          </ScrollReveal>
 
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {t.reviews.items.map((r) => (
-              <figure
-                key={r.name}
-                className="flex flex-col justify-between rounded-3xl border border-line bg-background p-5 sm:p-6 shadow-2xs"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-0.5 text-saffron">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} size={15} fill="currentColor" />
-                      ))}
+          <ScrollReveal animation="fade-up" delay={100}>
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+              {t.reviews.items.map((r) => (
+                <figure
+                  key={r.name}
+                  className="flex flex-col justify-between rounded-3xl border border-line bg-background p-5 sm:p-6 shadow-2xs transition duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/30 card-shine star-twinkle"
+                >
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-0.5 text-saffron">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} size={15} fill="currentColor" className="star-icon transition" />
+                        ))}
+                      </div>
+                      <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                        ✓ {t.reviews.verified}
+                      </span>
                     </div>
-                    <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
-                      ✓ {t.reviews.verified}
-                    </span>
+                    <blockquote className="mt-3 text-sm leading-relaxed text-foreground/90">
+                      “{r.text}”
+                    </blockquote>
                   </div>
-                  <blockquote className="mt-3 text-sm leading-relaxed text-foreground/90">
-                    “{r.text}”
-                  </blockquote>
-                </div>
 
-                <figcaption className="mt-4 pt-3 border-t border-line/60">
-                  <p className="text-sm font-bold text-primary">{r.name}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+                  <figcaption className="mt-4 pt-3 border-t border-line/60">
+                    <p className="text-sm font-bold text-primary">{r.name}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-4 sm:px-6 py-12 sm:py-16">
-        <div className="weave relative overflow-hidden rounded-3xl sm:rounded-[2.5rem] bg-indigo p-6 sm:p-10 md:p-14 text-primary-foreground shadow-xl">
-          <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
-            {t.contact.eyebrow}
-          </p>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
-            {t.contact.title}
-          </h2>
-          {/* Tailor Contact Profile Card */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-6 p-3.5 rounded-2xl bg-white/10 backdrop-blur-xs border border-white/10">
-            <div className="flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/uma-portrait.jpg"
-                alt={t.site.owner}
-                className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-saffron"
-              />
-              <div>
-                <p className="font-bold text-sm text-white">{t.site.owner}</p>
-                <p className="text-xs text-white/80">{t.hero.umaRole} · {t.site.society}</p>
+        <ScrollReveal animation="fade-up">
+          <div className="weave relative overflow-hidden rounded-3xl sm:rounded-[2.5rem] bg-indigo p-6 sm:p-10 md:p-14 text-primary-foreground shadow-xl">
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
+              {t.contact.eyebrow}
+            </p>
+            <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
+              {t.contact.title}
+            </h2>
+            {/* Tailor Contact Profile Card */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-6 p-3.5 rounded-2xl bg-white/10 backdrop-blur-xs border border-white/10">
+              <div className="flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/uma-portrait.jpg"
+                  alt={t.site.owner}
+                  className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-saffron"
+                />
+                <div>
+                  <p className="font-bold text-sm text-white">{t.site.owner}</p>
+                  <p className="text-xs text-white/80">{t.hero.umaRole} · {t.site.society}</p>
+                </div>
               </div>
+              <span className="self-start sm:self-auto rounded-full bg-saffron/20 border border-saffron/30 px-3 py-1 text-xs font-semibold text-saffron">
+                ✨ {t.hero.trustPickup}
+              </span>
             </div>
-            <span className="self-start sm:self-auto rounded-full bg-saffron/20 border border-saffron/30 px-3 py-1 text-xs font-semibold text-saffron">
-              ✨ {t.hero.trustPickup}
-            </span>
-          </div>
 
-          <div className="mt-5 space-y-2.5 text-xs sm:text-sm text-primary-foreground/90">
-            <p className="flex items-center gap-2">
-              <Phone size={16} className="text-saffron shrink-0" />
-              <span>
-                <b>{t.contact.phoneLabel}:</b> {t.site.phone} ({t.site.owner})
-              </span>
-            </p>
-            <p className="flex items-center gap-2">
-              <MapPin size={16} className="text-saffron shrink-0" />
-              <span>
-                <b>{t.contact.locationLabel}:</b> {t.site.society}
-              </span>
-            </p>
-            <p className="flex items-center gap-2">
-              <Clock size={16} className="text-saffron shrink-0" />
-              <span>
-                <b>{t.contact.hoursLabel}:</b> {t.site.hours}
-              </span>
-            </p>
-          </div>
+            <div className="mt-5 space-y-2.5 text-xs sm:text-sm text-primary-foreground/90">
+              <p className="flex items-center gap-2">
+                <Phone size={16} className="text-saffron shrink-0" />
+                <span>
+                  <b>{t.contact.phoneLabel}:</b> {t.site.phone} ({t.site.owner})
+                </span>
+              </p>
+              <p className="flex items-center gap-2">
+                <MapPin size={16} className="text-saffron shrink-0" />
+                <span>
+                  <b>{t.contact.locationLabel}:</b> {t.site.society}
+                </span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Clock size={16} className="text-saffron shrink-0" />
+                <span>
+                  <b>{t.contact.hoursLabel}:</b> {t.site.hours}
+                </span>
+              </p>
+            </div>
 
-          <div className="mt-4 rounded-xl bg-white/10 p-2.5 text-xs text-primary-foreground/95 backdrop-blur-xs">
-            {t.contact.doorstepNotice}
-          </div>
+            <div className="mt-4 rounded-xl bg-white/10 p-2.5 text-xs text-primary-foreground/95 backdrop-blur-xs">
+              {t.contact.doorstepNotice}
+            </div>
 
-          <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
-            <ButtonLink
-              size="lg"
-              variant="whatsapp"
-              target="_blank"
-              rel="noopener"
-              href={waLink(t.site.whatsapp, t.contact.waContactMsg)}
-              className="w-full sm:w-auto shadow-md"
-            >
-              <MessageCircle size={20} />
-              <span>{t.contact.waBtn}</span>
-            </ButtonLink>
+            <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
+              <ButtonLink
+                size="lg"
+                variant="whatsapp"
+                target="_blank"
+                rel="noopener"
+                href={waLink(t.site.whatsapp, t.contact.waContactMsg)}
+                className="w-full sm:w-auto shadow-md btn-glow"
+              >
+                <MessageCircle size={20} />
+                <span>{t.contact.waBtn}</span>
+              </ButtonLink>
 
-            <ButtonLink
-              size="lg"
-              href={`tel:+${t.site.whatsapp}`}
-              className="w-full sm:w-auto bg-primary-foreground text-indigo hover:bg-white font-bold"
-            >
-              <Phone size={18} />
-              <span>{t.contact.callBtn}</span>
-            </ButtonLink>
+              <ButtonLink
+                size="lg"
+                href={`tel:+${t.site.whatsapp}`}
+                className="w-full sm:w-auto bg-primary-foreground text-indigo hover:bg-white font-bold"
+              >
+                <Phone size={18} />
+                <span>{t.contact.callBtn}</span>
+              </ButtonLink>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Footer */}

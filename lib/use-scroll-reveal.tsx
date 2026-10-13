@@ -61,14 +61,13 @@ export function ScrollReveal({
   delay?: number;
   duration?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
   threshold?: number;
   rootMargin?: string;
 }) {
   const [ref, isVisible] = useScrollReveal<HTMLElement>({ threshold, rootMargin });
 
   return (
-    // @ts-expect-error - dynamic tag
     <Tag
       ref={ref}
       className={`scroll-reveal ${animation} ${isVisible ? "revealed" : ""} ${className}`}
