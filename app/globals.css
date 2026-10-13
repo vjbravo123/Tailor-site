@@ -86,7 +86,175 @@ html[data-lang="hi"] button {
   scrollbar-width: none;
 }
 
-/* Shimmer sweep animation for Coming Soon badge */
+/* ============================================================
+   SCROLL-TRIGGERED REVEAL ANIMATIONS
+   ============================================================ */
+.scroll-reveal {
+  transition-property: opacity, transform, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Fade Up */
+.scroll-reveal.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+}
+.scroll-reveal.fade-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade In */
+.scroll-reveal.fade-in {
+  opacity: 0;
+}
+.scroll-reveal.fade-in.revealed {
+  opacity: 1;
+}
+
+/* Slide Left (enters from right) */
+.scroll-reveal.slide-left {
+  opacity: 0;
+  transform: translateX(40px);
+}
+.scroll-reveal.slide-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide Right (enters from left) */
+.scroll-reveal.slide-right {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.scroll-reveal.slide-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale Up */
+.scroll-reveal.scale-up {
+  opacity: 0;
+  transform: scale(0.92);
+}
+.scroll-reveal.scale-up.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Blur In */
+.scroll-reveal.blur-in {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
+}
+.scroll-reveal.blur-in.revealed {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    transition-duration: 0ms !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ============================================================
+   CARD HOVER SHINE / GLEAM EFFECT
+   A diagonal light sweep that crosses the card on hover
+   ============================================================ */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+.card-shine:hover::after {
+  transform: translateX(100%);
+}
+
+/* ============================================================
+   ANIMATED GRADIENT TEXT — for hero headlines
+   A slowly shifting gradient that makes text feel alive
+   ============================================================ */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-saffron) 30%,
+    var(--color-primary) 60%,
+    #c4455f 100%
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 6s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   GLOWING CTA BUTTON PULSE
+   Subtle ring pulse behind the WhatsApp CTA button
+   ============================================================ */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(31, 168, 85, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(31, 168, 85, 0); }
+}
+.btn-glow {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   ANIMATED NAV UNDERLINE
+   Smooth underline that grows from center on hover
+   ============================================================ */
+.nav-link-animated {
+  position: relative;
+}
+.nav-link-animated::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 1px;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+.nav-link-animated:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ============================================================
+   SHIMMER SWEEP for Coming Soon badge
+   ============================================================ */
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
@@ -106,7 +274,9 @@ html[data-lang="hi"] button {
   background-clip: text;
 }
 
-/* Floating animation for coming-soon decorative elements */
+/* ============================================================
+   FLOATING ANIMATION for decorative elements
+   ============================================================ */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-8px) rotate(3deg); }
@@ -118,3 +288,73 @@ html[data-lang="hi"] button {
   animation: float 8s ease-in-out infinite;
   animation-delay: 1s;
 }
+
+/* ============================================================
+   HERO IMAGE PARALLAX-LIKE DEPTH on Desktop
+   Subtle scale + shadow on the photo container
+   ============================================================ */
+.hero-photo-wrapper {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-photo-wrapper:hover {
+  transform: scale(1.02) translateY(-4px);
+}
+
+/* ============================================================
+   STAGGERED ANIMATION DELAYS for grid children
+   Apply .stagger-children on parent, each child gets sequential delay
+   ============================================================ */
+.stagger-children > .scroll-reveal:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > .scroll-reveal:nth-child(2) { transition-delay: 80ms; }
+.stagger-children > .scroll-reveal:nth-child(3) { transition-delay: 160ms; }
+.stagger-children > .scroll-reveal:nth-child(4) { transition-delay: 240ms; }
+.stagger-children > .scroll-reveal:nth-child(5) { transition-delay: 320ms; }
+.stagger-children > .scroll-reveal:nth-child(6) { transition-delay: 400ms; }
+.stagger-children > .scroll-reveal:nth-child(7) { transition-delay: 480ms; }
+.stagger-children > .scroll-reveal:nth-child(8) { transition-delay: 560ms; }
+.stagger-children > .scroll-reveal:nth-child(9) { transition-delay: 640ms; }
+
+/* ============================================================
+   ICON BOUNCE on service card hover
+   ============================================================ */
+@keyframes icon-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) rotate(-3deg); }
+}
+.group:hover .icon-bounce {
+  animation: icon-bounce 0.5s ease;
+}
+
+/* ============================================================
+   STAR TWINKLE on review cards
+   ============================================================ */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+.star-twinkle:hover .star-icon {
+  animation: twinkle 0.4s ease forwards;
+}
+.star-twinkle:hover .star-icon:nth-child(2) { animation-delay: 0.05s; }
+.star-twinkle:hover .star-icon:nth-child(3) { animation-delay: 0.1s; }
+.star-twinkle:hover .star-icon:nth-child(4) { animation-delay: 0.15s; }
+.star-twinkle:hover .star-icon:nth-child(5) { animation-delay: 0.2s; }
+
+/* ============================================================
+   SMOOTH SECTION DIVIDER WAVE (between hero and services)
+   ============================================================ */
+.section-wave {
+  position: relative;
+}
+.section-wave::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--color-background);
+  clip-path: ellipse(55% 100% at 50% 0%);
+  z-index: 1;
+}
+

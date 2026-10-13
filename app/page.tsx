@@ -706,7 +706,6 @@ export default function Home() {
 
                 <figcaption className="mt-4 pt-3 border-t border-line/60">
                   <p className="text-sm font-bold text-primary">{r.name}</p>
-                  <p className="text-xs text-muted">{r.flat}</p>
                 </figcaption>
               </figure>
             ))}
