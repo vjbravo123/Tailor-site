@@ -85,3 +85,36 @@ html[data-lang="hi"] button {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Shimmer sweep animation for Coming Soon badge */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-badge {
+  background: linear-gradient(
+    90deg,
+    var(--color-saffron) 0%,
+    #ffe082 40%,
+    var(--color-saffron) 60%,
+    #ffe082 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating animation for coming-soon decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+.float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+.float-slower {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 1s;
+}

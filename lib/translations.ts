@@ -183,6 +183,11 @@ export const translations = {
       swipeHint: "Swipe for more → New stock is shared in the society group first.",
       enquire: "Enquire",
       waPrefix: "Hi Uma ji! I'm interested in ready-to-wear:",
+      comingSoonBadge: "Coming Soon",
+      comingSoonTitle: "Our boutique collection is almost ready!",
+      comingSoonDesc: "Beautiful suits, sarees & women's wear — handpicked by Uma ji. New stock will be shared in the society WhatsApp group first.",
+      comingSoonCta: "Get Notified on WhatsApp",
+      comingSoonWaMsg: "Hi Uma ji! Please notify me when the ready-to-wear collection is available.",
       items: [
         {
           id: "suit-1",
@@ -454,6 +459,11 @@ export const translations = {
       swipeHint: "और देखने के लिए स्वाइप करें → नया स्टॉक पहले सोसाइटी ग्रुप में साझा होता है।",
       enquire: "पूछताछ करें",
       waPrefix: "नमस्ते उमा जी! मुझे इस तैयार कलेक्शन में रुचि है:",
+      comingSoonBadge: "जल्द आ रहा है",
+      comingSoonTitle: "हमारा बुटीक कलेक्शन लगभग तैयार है!",
+      comingSoonDesc: "सुंदर सूट, साड़ियां व लेडीज़ वियर — उमा जी द्वारा चुने हुए। नया स्टॉक पहले सोसाइटी व्हाट्सएप ग्रुप में साझा किया जाएगा।",
+      comingSoonCta: "व्हाट्सएप पर सूचना पाएं",
+      comingSoonWaMsg: "नमस्ते उमा जी! जब तैयार कपड़ों का कलेक्शन उपलब्ध हो तो कृपया मुझे बताइएगा।",
       items: [
         {
           id: "suit-1",

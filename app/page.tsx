@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import {
   ArrowRight,
   ArrowUp,
+  Bell,
   Clock,
   MapPin,
   MessageCircle,
@@ -185,84 +186,86 @@ export default function Home() {
                 <img
                   src="/images/hero-1.jpg"
                   alt={`${t.site.owner} — Ladies Tailor`}
-                  className="aspect-[4/3.2] w-full object-cover object-top"
+                  className="aspect-[4/3] w-full object-cover object-top"
                 />
-                {/* Dark gradient overlay for text legibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
+                {/* Richer gradient overlay for text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/5 pointer-events-none" />
 
                 {/* Experience badge — top right */}
-                <div className="absolute top-3 right-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-primary shadow-sm backdrop-blur-sm">
+                <div className="absolute top-3 right-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold text-primary shadow-sm backdrop-blur-sm">
                   ✨ {t.hero.umaExp}
                 </div>
 
-                {/* Overlaid Headline — bottom of image */}
-                <div className="absolute bottom-0 inset-x-0 px-4 pb-4">
-                  <h1 className="font-display text-xl font-bold leading-snug text-white drop-shadow-md">
+                {/* Overlaid Headline & tailor identity — bottom of image */}
+                <div className="absolute bottom-0 inset-x-0 px-4 pb-5">
+                  <h1 className="font-display text-[22px] font-bold leading-[1.25] text-white drop-shadow-lg">
                     {t.hero.titlePart1}
                     <span className="text-saffron">{t.hero.titleHighlight}</span>
                     {t.hero.titlePart2}
                   </h1>
+
+                  {/* Tailor identity row — inline with headline for compact feel */}
+                  <div className="mt-3 flex items-center gap-2.5">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/uma-portrait.jpg"
+                      alt={t.hero.umaTitle}
+                      className="h-9 w-9 shrink-0 rounded-full object-cover ring-2 ring-saffron/80"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[13px] font-bold text-white leading-tight">{t.hero.umaTitle}</p>
+                      <p className="text-[11px] text-white/75">{t.hero.umaRole}</p>
+                    </div>
+                    <span className="shrink-0 rounded-full bg-white/20 backdrop-blur-sm px-2 py-0.5 text-[11px] font-bold text-saffron">
+                      5.0 ★
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Compact info strip below the image */}
-              <div className="px-4 pt-3 pb-1 space-y-3">
-                {/* Tailor identity row */}
-                <div className="flex items-center gap-2.5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/uma-portrait.jpg"
-                    alt={t.hero.umaTitle}
-                    className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-saffron"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-bold text-foreground leading-tight">{t.hero.umaTitle}</p>
-                    <p className="text-[11px] text-muted">{t.hero.umaRole} · {t.hero.societyTag}</p>
-                  </div>
-                  <span className="shrink-0 rounded-full bg-saffron/15 px-2 py-0.5 text-[11px] font-bold text-saffron">
-                    5.0 ★
-                  </span>
-                </div>
-
-                {/* Single-line highlights */}
-                <div className="flex items-center gap-3 text-[11px] text-muted">
-                  <span className="inline-flex items-center gap-1">
+              {/* Action strip below the image */}
+              <div className="px-4 pt-4 pb-2 space-y-3.5">
+                {/* Trust highlights — horizontal chips */}
+                <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1.5 text-[11px] font-medium text-foreground">
                     <MapPin size={12} className="text-primary shrink-0" />
                     {t.hero.trustPickupSub}
                   </span>
-                  <span className="text-line">·</span>
-                  <span className="inline-flex items-center gap-1">
+                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1.5 text-[11px] font-medium text-foreground">
                     <Clock size={12} className="text-saffron shrink-0" />
                     {t.site.hours}
                   </span>
+                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1.5 text-[11px] font-medium text-primary">
+                    ✂️ {t.hero.trustFit}
+                  </span>
                 </div>
 
-                {/* Single prominent CTA */}
+                {/* Primary CTA */}
                 <ButtonLink
                   size="lg"
                   variant="whatsapp"
                   target="_blank"
                   rel="noopener"
                   href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
-                  className="w-full text-sm font-semibold shadow-lg shadow-whatsapp/25 justify-center"
+                  className="w-full text-sm font-semibold shadow-lg shadow-whatsapp/25 justify-center h-12"
                 >
                   <MessageCircle size={18} />
                   <span>{t.hero.bookWa}</span>
                 </ButtonLink>
 
                 {/* Secondary actions — compact row */}
-                <div className="flex items-center justify-center gap-4 text-xs">
+                <div className="flex items-center justify-center gap-5 text-xs pb-1">
                   <a
                     href={`tel:+${t.site.whatsapp}`}
-                    className="inline-flex items-center gap-1.5 font-medium text-primary"
+                    className="inline-flex items-center gap-1.5 font-semibold text-primary"
                   >
                     <Phone size={14} />
                     <span>{t.hero.callDirect}</span>
                   </a>
-                  <span className="text-line">·</span>
+                  <span className="h-4 w-px bg-line" />
                   <a
                     href="#services"
-                    className="inline-flex items-center gap-1 font-medium text-primary"
+                    className="inline-flex items-center gap-1 font-semibold text-primary"
                   >
                     <span>{t.hero.seeServices}</span>
                     <ArrowRight size={12} />
@@ -536,79 +539,91 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ready to Wear (Shop) Section */}
-      <section id="shop" className="bg-primary py-12 sm:py-16 text-primary-foreground">
+      {/* Ready to Wear (Shop) Section — Coming Soon */}
+      <section id="shop" className="bg-primary py-12 sm:py-16 text-primary-foreground overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
-                {t.shop.eyebrow}
-              </p>
-              <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
-                {t.shop.title}
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-primary-foreground/80 max-w-xl">
-                {t.shop.subtitle}
-              </p>
-            </div>
-            <p className="text-xs text-saffron/90 hidden md:block">
-              {t.shop.swipeHint}
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-saffron">
+              {t.shop.eyebrow}
+            </p>
+            <h2 className="mt-1.5 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
+              {t.shop.title}
+            </h2>
+            <p className="mt-2 text-sm sm:text-base text-primary-foreground/80 max-w-xl mx-auto">
+              {t.shop.subtitle}
             </p>
           </div>
 
-          {/* Product Cards: Touch scroll snap carousel on mobile, clean grid on desktop */}
-          <div className="-mx-4 sm:-mx-6 mt-7 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-4 sm:px-6 pb-4 no-scrollbar md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0">
-            {t.shop.items.map((p) => {
-              const productWaMsg = `${t.shop.waPrefix} ${p.name} (${p.price})`;
-
-              return (
-                <article
-                  key={p.id}
-                  className="group w-[80%] sm:w-[50%] shrink-0 snap-start overflow-hidden rounded-3xl bg-card text-foreground shadow-md transition duration-300 hover:shadow-xl md:w-auto"
+          {/* Coming Soon showcase area */}
+          <div className="relative mt-8 sm:mt-10">
+            {/* Blurred placeholder product cards behind */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 select-none" aria-hidden="true">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div
+                  key={i}
+                  className={cn(
+                    "rounded-3xl bg-white/[0.07] backdrop-blur-[1px] overflow-hidden transition",
+                    i > 4 ? "hidden sm:block" : "",
+                    i > 3 ? "hidden sm:block" : ""
+                  )}
                 >
-                  <div className="relative">
-                    <Photo
-                      src={p.img}
-                      alt={p.name}
-                      tone={p.tone}
-                      className="aspect-[4/5] w-full"
-                    />
-                    {p.tag && (
-                      <span className="absolute left-3 top-3 rounded-full bg-saffron px-3 py-1 text-xs font-bold text-foreground shadow-xs">
-                        {p.tag}
-                      </span>
-                    )}
+                  {/* Placeholder image area */}
+                  <div className="aspect-[4/5] w-full bg-gradient-to-br from-white/10 to-white/[0.03]" />
+                  {/* Placeholder text area */}
+                  <div className="p-3 sm:p-4 space-y-2">
+                    <div className="h-3 w-3/4 rounded-full bg-white/10" />
+                    <div className="h-3 w-1/2 rounded-full bg-white/[0.07]" />
                   </div>
+                </div>
+              ))}
+            </div>
 
-                  <div className="p-4 sm:p-5">
-                    <h3 className="font-display text-base sm:text-lg font-bold leading-snug">
-                      {p.name}
-                    </h3>
-                    <div className="mt-3 flex items-center justify-between gap-2">
-                      <span className="text-base sm:text-lg font-extrabold text-primary">
-                        {p.price}
-                      </span>
-                      <ButtonLink
-                        size="sm"
-                        variant="whatsapp"
-                        target="_blank"
-                        rel="noopener"
-                        href={waLink(t.site.whatsapp, productWaMsg)}
-                        className="text-xs h-9 px-3"
-                      >
-                        <MessageCircle size={14} />
-                        <span>{t.shop.enquire}</span>
-                      </ButtonLink>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
+            {/* Frosted glass Coming Soon overlay */}
+            <div className="absolute inset-0 flex items-center justify-center bg-primary/60 backdrop-blur-md rounded-3xl">
+              {/* Floating decorative emojis */}
+              <span className="absolute top-6 left-6 sm:top-8 sm:left-10 text-3xl sm:text-4xl opacity-30 float-slow" aria-hidden="true">👗</span>
+              <span className="absolute bottom-8 right-6 sm:bottom-10 sm:right-10 text-3xl sm:text-4xl opacity-25 float-slower" aria-hidden="true">🧵</span>
+              <span className="absolute top-10 right-8 sm:top-12 sm:right-16 text-2xl opacity-20 float-slower" aria-hidden="true">✨</span>
+              <span className="absolute bottom-12 left-10 sm:bottom-14 sm:left-16 text-2xl opacity-20 float-slow" aria-hidden="true">🪡</span>
+
+              {/* Central content card */}
+              <div className="relative z-10 text-center px-6 py-8 sm:px-10 sm:py-10 max-w-md mx-auto">
+                {/* Shimmer animated badge */}
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron/30 bg-saffron/15 px-4 py-1.5 text-sm font-bold backdrop-blur-sm">
+                  <span className="flex h-2 w-2 rounded-full bg-saffron animate-pulse" />
+                  <span className="shimmer-badge text-base font-extrabold">{t.shop.comingSoonBadge}</span>
+                </span>
+
+                <h3 className="mt-4 font-display text-xl sm:text-2xl font-bold leading-snug text-primary-foreground">
+                  {t.shop.comingSoonTitle}
+                </h3>
+                <p className="mt-2.5 text-sm sm:text-base text-primary-foreground/80 leading-relaxed">
+                  {t.shop.comingSoonDesc}
+                </p>
+
+                {/* Notify CTA */}
+                <ButtonLink
+                  size="lg"
+                  variant="whatsapp"
+                  target="_blank"
+                  rel="noopener"
+                  href={waLink(t.site.whatsapp, t.shop.comingSoonWaMsg)}
+                  className="mt-5 mx-auto text-sm font-semibold shadow-lg shadow-whatsapp/30 justify-center"
+                >
+                  <Bell size={16} />
+                  <span>{t.shop.comingSoonCta}</span>
+                </ButtonLink>
+
+                {/* Subtle decorative divider */}
+                <div className="mt-6 flex items-center justify-center gap-2 text-primary-foreground/40">
+                  <span className="h-px w-8 bg-current" />
+                  <Scissors size={14} />
+                  <span className="h-px w-8 bg-current" />
+                </div>
+              </div>
+            </div>
           </div>
-
-          <p className="mt-3 text-xs text-primary-foreground/75 text-center md:hidden">
-            {t.shop.swipeHint}
-          </p>
         </div>
       </section>
 
