@@ -70,7 +70,7 @@ export const translations = {
       titlePart1: "Custom fitting & ",
       titleHighlight: "perfect stitching",
       titlePart2: ", right inside Sare Homes.",
-      desc: "Sarees, designer blouses, suits and alterations — stitched with care by Uma Joshi right here in Tower 8, Sare Homes. Free doorstep pickup & drop.",
+      desc: "Sarees, blouses, suits and alterations — stitched with care by Uma Joshi right here in Tower 8, Sare Homes. Free doorstep pickup & drop.",
       shortDesc: "Saree fall-pico, blouses, suits & alterations with doorstep pickup in Tower 8.",
       bookWa: "Book on WhatsApp",
       callDirect: "Call Uma Joshi",
