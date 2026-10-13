@@ -173,11 +173,107 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-4 pb-10 sm:pt-8 sm:pb-14 md:py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid items-center gap-6 sm:gap-8 md:grid-cols-12 md:gap-10">
-            {/* Left Column: Headline, Bio & CTAs */}
-            <div className="md:col-span-7 flex flex-col justify-center">
+      <section className="relative overflow-hidden pb-6 sm:pb-14 md:py-16">
+        <div className="mx-auto max-w-6xl px-0 sm:px-6">
+          <div className="grid items-center md:grid-cols-12 md:gap-10">
+
+            {/* ===== MOBILE HERO (visible below md) ===== */}
+            <div className="block md:hidden">
+              {/* Full-bleed Hero Image with overlaid text */}
+              <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/hero-1.jpg"
+                  alt={`${t.site.owner} — Ladies Tailor`}
+                  className="aspect-[4/3.2] w-full object-cover object-top"
+                />
+                {/* Dark gradient overlay for text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
+
+                {/* Experience badge — top right */}
+                <div className="absolute top-3 right-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-primary shadow-sm backdrop-blur-sm">
+                  ✨ {t.hero.umaExp}
+                </div>
+
+                {/* Overlaid Headline — bottom of image */}
+                <div className="absolute bottom-0 inset-x-0 px-4 pb-4">
+                  <h1 className="font-display text-xl font-bold leading-snug text-white drop-shadow-md">
+                    {t.hero.titlePart1}
+                    <span className="text-saffron">{t.hero.titleHighlight}</span>
+                    {t.hero.titlePart2}
+                  </h1>
+                </div>
+              </div>
+
+              {/* Compact info strip below the image */}
+              <div className="px-4 pt-3 pb-1 space-y-3">
+                {/* Tailor identity row */}
+                <div className="flex items-center gap-2.5">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/uma-portrait.jpg"
+                    alt={t.hero.umaTitle}
+                    className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-saffron"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-foreground leading-tight">{t.hero.umaTitle}</p>
+                    <p className="text-[11px] text-muted">{t.hero.umaRole} · {t.hero.societyTag}</p>
+                  </div>
+                  <span className="shrink-0 rounded-full bg-saffron/15 px-2 py-0.5 text-[11px] font-bold text-saffron">
+                    5.0 ★
+                  </span>
+                </div>
+
+                {/* Single-line highlights */}
+                <div className="flex items-center gap-3 text-[11px] text-muted">
+                  <span className="inline-flex items-center gap-1">
+                    <MapPin size={12} className="text-primary shrink-0" />
+                    {t.hero.trustPickupSub}
+                  </span>
+                  <span className="text-line">·</span>
+                  <span className="inline-flex items-center gap-1">
+                    <Clock size={12} className="text-saffron shrink-0" />
+                    {t.site.hours}
+                  </span>
+                </div>
+
+                {/* Single prominent CTA */}
+                <ButtonLink
+                  size="lg"
+                  variant="whatsapp"
+                  target="_blank"
+                  rel="noopener"
+                  href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
+                  className="w-full text-sm font-semibold shadow-lg shadow-whatsapp/25 justify-center"
+                >
+                  <MessageCircle size={18} />
+                  <span>{t.hero.bookWa}</span>
+                </ButtonLink>
+
+                {/* Secondary actions — compact row */}
+                <div className="flex items-center justify-center gap-4 text-xs">
+                  <a
+                    href={`tel:+${t.site.whatsapp}`}
+                    className="inline-flex items-center gap-1.5 font-medium text-primary"
+                  >
+                    <Phone size={14} />
+                    <span>{t.hero.callDirect}</span>
+                  </a>
+                  <span className="text-line">·</span>
+                  <a
+                    href="#services"
+                    className="inline-flex items-center gap-1 font-medium text-primary"
+                  >
+                    <span>{t.hero.seeServices}</span>
+                    <ArrowRight size={12} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* ===== DESKTOP HERO (visible md and up) ===== */}
+            {/* Left Column: Text */}
+            <div className="hidden md:flex md:col-span-7 flex-col justify-center">
               {/* Status / Location Badge */}
               <div className="inline-flex self-start items-center gap-1.5 rounded-full border border-primary/20 bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-2xs">
                 <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -185,94 +281,55 @@ export default function Home() {
                 <span>{t.hero.badge}</span>
               </div>
 
-              {/* Main Headline with clear contrast */}
-              <h1 className="mt-3 sm:mt-4 font-display text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.2] tracking-tight text-foreground">
+              {/* Headline */}
+              <h1 className="mt-4 font-display text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.2] tracking-tight text-foreground">
                 {t.hero.titlePart1}
                 <span className="text-primary font-bold">{t.hero.titleHighlight}</span>
                 {t.hero.titlePart2}
               </h1>
 
-              {/* Mobile Portrait Card (Visible on Phone between Title and Action to create instant human connection) */}
-              <div className="mt-4 block md:hidden">
-                <div className="relative overflow-hidden rounded-2xl border-2 border-primary/15 shadow-xl bg-card">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/hero-1.jpg"
-                    alt={`${t.site.owner} — Ladies Tailor`}
-                    className="aspect-[4/3] w-full object-cover object-top"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-
-                  {/* Corner Experience Tag */}
-                  <div className="absolute top-2.5 right-2.5 rounded-full bg-card/95 px-2.5 py-0.5 text-[10px] font-bold text-primary shadow-xs backdrop-blur-xs">
-                    ✨ {t.hero.umaExp}
-                  </div>
-
-                  {/* Bottom Tailor Identity Bar */}
-                  <div className="absolute bottom-2.5 inset-x-2.5 rounded-xl bg-card/95 p-2.5 backdrop-blur-md border border-line shadow-md">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2 min-w-0">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src="/images/uma-portrait.jpg"
-                          alt={t.hero.umaTitle}
-                          className="h-9 w-9 shrink-0 rounded-full object-cover ring-2 ring-saffron"
-                        />
-                        <div className="min-w-0">
-                          <p className="text-xs font-bold text-foreground truncate">{t.hero.umaTitle}</p>
-                          <p className="text-[10px] text-muted truncate">{t.hero.umaRole} · {t.hero.societyTag}</p>
-                        </div>
-                      </div>
-                      <span className="shrink-0 rounded-full bg-saffron/20 px-2 py-0.5 text-[10px] font-bold text-primary">
-                        5.0 ★
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* Description */}
-              <p className="mt-3 sm:mt-4 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-muted">
+              <p className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-muted">
                 {t.hero.desc}
               </p>
 
-              {/* Clean, Non-Cramped Trust Highlights */}
-              <div className="mt-4 sm:mt-5 grid grid-cols-3 gap-2 sm:gap-3 max-w-lg">
-                <div className="rounded-xl sm:rounded-2xl border border-line bg-card/90 p-2 sm:p-2.5 text-center shadow-2xs">
-                  <span className="block text-xs sm:text-sm font-bold text-primary truncate">
+              {/* Trust highlights */}
+              <div className="mt-5 grid grid-cols-3 gap-3 max-w-lg">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs">
+                  <span className="block text-sm font-bold text-primary truncate">
                     🛵 {t.hero.trustPickup}
                   </span>
-                  <span className="block text-[10px] sm:text-xs text-muted truncate">
+                  <span className="block text-xs text-muted truncate">
                     {t.hero.trustPickupSub}
                   </span>
                 </div>
-                <div className="rounded-xl sm:rounded-2xl border border-line bg-card/90 p-2 sm:p-2.5 text-center shadow-2xs">
-                  <span className="block text-xs sm:text-sm font-bold text-saffron truncate">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs">
+                  <span className="block text-sm font-bold text-saffron truncate">
                     {t.hero.trustRating}
                   </span>
-                  <span className="block text-[10px] sm:text-xs text-muted truncate">
+                  <span className="block text-xs text-muted truncate">
                     {t.hero.trustRatingSub}
                   </span>
                 </div>
-                <div className="rounded-xl sm:rounded-2xl border border-line bg-card/90 p-2 sm:p-2.5 text-center shadow-2xs">
-                  <span className="block text-xs sm:text-sm font-bold text-indigo truncate">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs">
+                  <span className="block text-sm font-bold text-indigo truncate">
                     ✂️ {t.hero.trustFit}
                   </span>
-                  <span className="block text-[10px] sm:text-xs text-muted truncate">
+                  <span className="block text-xs text-muted truncate">
                     {t.hero.trustFitSub}
                   </span>
                 </div>
               </div>
 
-              {/* CTA Action Buttons */}
-              <div className="mt-5 sm:mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center">
+              {/* CTA Buttons */}
+              <div className="mt-6 flex flex-row items-center gap-3">
                 <ButtonLink
                   size="lg"
                   variant="whatsapp"
                   target="_blank"
                   rel="noopener"
                   href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
-                  className="w-full sm:w-auto text-sm sm:text-base font-semibold shadow-lg shadow-whatsapp/25 justify-center"
+                  className="text-base font-semibold shadow-lg shadow-whatsapp/25 justify-center"
                 >
                   <MessageCircle size={19} />
                   <span>{t.hero.bookWa}</span>
@@ -282,15 +339,15 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   href={`tel:+${t.site.whatsapp}`}
-                  className="w-full sm:w-auto text-sm sm:text-base border-primary/30 justify-center hover:bg-card"
+                  className="text-base border-primary/30 justify-center hover:bg-card"
                 >
                   <Phone size={17} className="text-primary" />
                   <span>{t.hero.callDirect}</span>
                 </ButtonLink>
               </div>
 
-              {/* Timings & Direct Services Link */}
-              <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
+              {/* Timings */}
+              <div className="mt-4 flex items-center gap-4 text-xs text-muted">
                 <span className="inline-flex items-center gap-1.5">
                   <Clock size={14} className="text-saffron shrink-0" />
                   <span>{t.hero.hours}</span>
@@ -302,25 +359,24 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Desktop Visual Showcase Column (md:block) */}
+            {/* Right Column: Desktop Photo */}
             <div className="hidden md:block md:col-span-5">
               <div className="relative mx-auto w-full max-w-md">
-                {/* Master Studio Frame */}
-                <div className="relative overflow-hidden rounded-3xl sm:rounded-[2.5rem] border-2 border-primary/15 shadow-2xl bg-card">
+                <div className="relative overflow-hidden rounded-[2.5rem] border-2 border-primary/15 shadow-2xl bg-card">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/hero-1.jpg"
-                    alt={`${t.site.owner} — Master Ladies Tailor at Sewing Machine`}
+                    alt={`${t.site.owner} — Master Ladies Tailor`}
                     className="aspect-[4/4.5] w-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
 
-                  {/* Top Badge: Experience & Boutique Quality */}
+                  {/* Experience badge */}
                   <div className="absolute top-4 right-4 rounded-full bg-card/95 px-3 py-1 text-xs font-bold text-primary shadow-sm backdrop-blur-xs border border-line">
                     ✨ {t.hero.umaExp}
                   </div>
 
-                  {/* Floating Identity & Society Card */}
+                  {/* Identity card */}
                   <div className="absolute bottom-4 inset-x-4 rounded-2xl bg-card/95 p-3.5 backdrop-blur-md border border-line shadow-xl">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3 min-w-0">
@@ -346,6 +402,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
