@@ -182,36 +182,36 @@ export default function Home() {
             {/* ===== MOBILE HERO (visible below md) ===== */}
             <div className="block md:hidden">
               {/* Full-bleed Hero Image with overlaid text */}
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/hero-1.jpg"
                   alt={`${t.site.owner} — Ladies Tailor`}
-                  className="aspect-[4/3] w-full object-cover object-top"
+                  className="aspect-[4/3] w-full object-cover object-top animate-hero-img"
                 />
                 {/* Richer gradient overlay for text legibility */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/5 pointer-events-none" />
 
                 {/* Experience badge — top right */}
-                <div className="absolute top-3 right-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold text-primary shadow-sm backdrop-blur-sm">
+                <div className="absolute top-3 right-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold text-primary shadow-sm backdrop-blur-sm animate-hero-badge float-slow">
                   ✨ {t.hero.umaExp}
                 </div>
 
                 {/* Overlaid Headline & tailor identity — bottom of image */}
-                <div className="absolute bottom-0 inset-x-0 px-4 pb-5">
-                  <h1 className="font-display text-[22px] font-bold leading-[1.25] text-white drop-shadow-lg">
+                <div className="absolute bottom-0 inset-x-0 px-4 pb-4">
+                  <h1 className="font-display text-[22px] font-bold leading-[1.25] text-white drop-shadow-lg animate-hero-up delay-75">
                     {t.hero.titlePart1}
-                    <span className="text-saffron">{t.hero.titleHighlight}</span>
+                    <span className="hero-gold-shimmer font-extrabold">{t.hero.titleHighlight}</span>
                     {t.hero.titlePart2}
                   </h1>
 
                   {/* Tailor identity row — inline with headline for compact feel */}
-                  <div className="mt-3 flex items-center gap-2.5">
+                  <div className="mt-2.5 flex items-center gap-2.5 animate-hero-up delay-150">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/images/uma-portrait.jpg"
                       alt={t.hero.umaTitle}
-                      className="h-9 w-9 shrink-0 rounded-full object-cover ring-2 ring-saffron/80"
+                      className="h-9 w-9 shrink-0 rounded-full object-cover ring-2 ring-saffron/90 shadow-sm"
                     />
                     <div className="min-w-0 flex-1">
                       <p className="text-[13px] font-bold text-white leading-tight">{t.hero.umaTitle}</p>
@@ -225,40 +225,43 @@ export default function Home() {
               </div>
 
               {/* Action strip below the image */}
-              <div className="px-4 pt-4 pb-2 space-y-3.5">
+              <div className="px-4 pt-3.5 pb-2 space-y-3">
                 {/* Trust highlights — horizontal chips */}
-                <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1.5 text-[11px] font-medium text-foreground">
+                <div className="flex items-center gap-2 overflow-x-auto no-scrollbar animate-hero-up delay-225">
+                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1.5 text-[11px] font-medium text-foreground active:scale-95 transition-transform">
+                    <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                     <MapPin size={12} className="text-primary shrink-0" />
                     {t.hero.trustPickupSub}
                   </span>
-                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1.5 text-[11px] font-medium text-foreground">
+                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1.5 text-[11px] font-medium text-foreground active:scale-95 transition-transform">
                     <Clock size={12} className="text-saffron shrink-0" />
                     {t.site.hours}
                   </span>
-                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1.5 text-[11px] font-medium text-primary">
+                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1.5 text-[11px] font-medium text-primary active:scale-95 transition-transform">
                     ✂️ {t.hero.trustFit}
                   </span>
                 </div>
 
                 {/* Primary CTA */}
-                <ButtonLink
-                  size="lg"
-                  variant="whatsapp"
-                  target="_blank"
-                  rel="noopener"
-                  href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
-                  className="w-full text-sm font-semibold shadow-lg shadow-whatsapp/25 justify-center h-12 btn-glow"
-                >
-                  <MessageCircle size={18} />
-                  <span>{t.hero.bookWa}</span>
-                </ButtonLink>
+                <div className="animate-hero-up delay-300">
+                  <ButtonLink
+                    size="lg"
+                    variant="whatsapp"
+                    target="_blank"
+                    rel="noopener"
+                    href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
+                    className="w-full text-sm font-semibold shadow-lg shadow-whatsapp/25 justify-center h-12 btn-glow btn-shine"
+                  >
+                    <MessageCircle size={18} />
+                    <span>{t.hero.bookWa}</span>
+                  </ButtonLink>
+                </div>
 
                 {/* Secondary actions — compact row */}
-                <div className="flex items-center justify-center gap-5 text-xs pb-1">
+                <div className="flex items-center justify-center gap-5 text-xs pb-1 animate-hero-up delay-375">
                   <a
                     href={`tel:+${t.site.whatsapp}`}
-                    className="inline-flex items-center gap-1.5 font-semibold text-primary"
+                    className="inline-flex items-center gap-1.5 font-semibold text-primary active:scale-95 transition"
                   >
                     <Phone size={14} />
                     <span>{t.hero.callDirect}</span>
@@ -266,7 +269,7 @@ export default function Home() {
                   <span className="h-4 w-px bg-line" />
                   <a
                     href="#services"
-                    className="inline-flex items-center gap-1 font-semibold text-primary"
+                    className="inline-flex items-center gap-1 font-semibold text-primary active:scale-95 transition"
                   >
                     <span>{t.hero.seeServices}</span>
                     <ArrowRight size={12} />
@@ -279,27 +282,27 @@ export default function Home() {
             {/* Left Column: Text */}
             <div className="hidden md:flex md:col-span-7 flex-col justify-center">
               {/* Status / Location Badge */}
-              <div className="inline-flex self-start items-center gap-1.5 rounded-full border border-primary/20 bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-2xs">
+              <div className="inline-flex self-start items-center gap-1.5 rounded-full border border-primary/20 bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-2xs animate-hero-down">
                 <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                 <MapPin size={13} className="text-primary shrink-0" />
                 <span>{t.hero.badge}</span>
               </div>
 
               {/* Headline */}
-              <h1 className="mt-4 font-display text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.2] tracking-tight text-foreground">
+              <h1 className="mt-4 font-display text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.2] tracking-tight text-foreground animate-hero-up delay-75">
                 {t.hero.titlePart1}
-                <span className="gradient-text font-extrabold">{t.hero.titleHighlight}</span>
+                <span className="hero-gold-shimmer font-extrabold">{t.hero.titleHighlight}</span>
                 {t.hero.titlePart2}
               </h1>
 
               {/* Description */}
-              <p className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-muted">
+              <p className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-muted animate-hero-up delay-150">
                 {t.hero.desc}
               </p>
 
               {/* Trust highlights */}
-              <div className="mt-5 grid grid-cols-3 gap-3 max-w-lg">
-                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-200 hover:-translate-y-0.5 hover:shadow-xs">
+              <div className="mt-5 grid grid-cols-3 gap-3 max-w-lg animate-hero-up delay-225">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md card-shine">
                   <span className="block text-sm font-bold text-primary truncate">
                     🛵 {t.hero.trustPickup}
                   </span>
@@ -307,7 +310,7 @@ export default function Home() {
                     {t.hero.trustPickupSub}
                   </span>
                 </div>
-                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-200 hover:-translate-y-0.5 hover:shadow-xs">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md card-shine">
                   <span className="block text-sm font-bold text-saffron truncate">
                     {t.hero.trustRating}
                   </span>
@@ -315,7 +318,7 @@ export default function Home() {
                     {t.hero.trustRatingSub}
                   </span>
                 </div>
-                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-200 hover:-translate-y-0.5 hover:shadow-xs">
+                <div className="rounded-2xl border border-line bg-card/90 p-2.5 text-center shadow-2xs transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md card-shine">
                   <span className="block text-sm font-bold text-indigo truncate">
                     ✂️ {t.hero.trustFit}
                   </span>
@@ -326,14 +329,14 @@ export default function Home() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="mt-6 flex flex-row items-center gap-3">
+              <div className="mt-6 flex flex-row items-center gap-3 animate-hero-up delay-300">
                 <ButtonLink
                   size="lg"
                   variant="whatsapp"
                   target="_blank"
                   rel="noopener"
                   href={waLink(t.site.whatsapp, t.hero.waHeroMsg)}
-                  className="text-base font-semibold shadow-lg shadow-whatsapp/25 justify-center btn-glow"
+                  className="text-base font-semibold shadow-lg shadow-whatsapp/25 justify-center btn-glow btn-shine"
                 >
                   <MessageCircle size={19} />
                   <span>{t.hero.bookWa}</span>
@@ -343,7 +346,7 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   href={`tel:+${t.site.whatsapp}`}
-                  className="text-base border-primary/30 justify-center hover:bg-card"
+                  className="text-base border-primary/30 justify-center hover:bg-card hover:border-primary transition"
                 >
                   <Phone size={17} className="text-primary" />
                   <span>{t.hero.callDirect}</span>
@@ -351,7 +354,7 @@ export default function Home() {
               </div>
 
               {/* Timings */}
-              <div className="mt-4 flex items-center gap-4 text-xs text-muted">
+              <div className="mt-4 flex items-center gap-4 text-xs text-muted animate-hero-up delay-375">
                 <span className="inline-flex items-center gap-1.5">
                   <Clock size={14} className="text-saffron shrink-0" />
                   <span>{t.hero.hours}</span>
@@ -364,24 +367,24 @@ export default function Home() {
             </div>
 
             {/* Right Column: Desktop Photo */}
-            <div className="hidden md:block md:col-span-5">
+            <div className="hidden md:block md:col-span-5 animate-hero-up delay-150">
               <div className="relative mx-auto w-full max-w-md">
                 <div className="hero-photo-wrapper relative overflow-hidden rounded-[2.5rem] border-2 border-primary/15 shadow-2xl bg-card">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/hero-1.jpg"
                     alt={`${t.site.owner} — Master Ladies Tailor`}
-                    className="aspect-[4/4.5] w-full object-cover object-top"
+                    className="aspect-[4/4.5] w-full object-cover object-top animate-hero-img"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
 
                   {/* Experience badge */}
-                  <div className="absolute top-4 right-4 rounded-full bg-card/95 px-3 py-1 text-xs font-bold text-primary shadow-sm backdrop-blur-xs border border-line">
+                  <div className="absolute top-4 right-4 rounded-full bg-card/95 px-3 py-1 text-xs font-bold text-primary shadow-sm backdrop-blur-xs border border-line animate-hero-badge float-slow">
                     ✨ {t.hero.umaExp}
                   </div>
 
                   {/* Identity card */}
-                  <div className="absolute bottom-4 inset-x-4 rounded-2xl bg-card/95 p-3.5 backdrop-blur-md border border-line shadow-xl">
+                  <div className="absolute bottom-4 inset-x-4 rounded-2xl bg-card/95 p-3.5 backdrop-blur-md border border-line shadow-xl animate-hero-up delay-300">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3 min-w-0">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
